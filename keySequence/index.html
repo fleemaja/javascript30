@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+  <p>Psst: type <em>konami</em></p>
+
+  <script>
+    const pressed = [];
+    const secret = 'konami';
+
+    window.addEventListener('keyup', (e) => {
+      pressed.push(e.key);
+      pressed.splice(-secret.length - 1, pressed.length - secret.length);
+      if (pressed.join('').includes(secret)) {
+        console.log('DING DING!');
+        cornify_add();
+      }
+      console.log(pressed);
+    });
+
+  </script>
+
+</body>
+</html>
